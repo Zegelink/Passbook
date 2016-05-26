@@ -2,9 +2,10 @@
     session_start();
     $wid = $_GET['wid'];
     $uid = $_SESSION['uid'];
-
     
     include 'connect.php';
+    //make sure the user logined has the permission to this wid
+    include 'widVerify.php';
     $sql = "SELECT * FROM `cs340_chencho`.`key_pb` WHERE wid = $wid";
     $result = $conn->query($sql);
     
@@ -23,24 +24,27 @@
             
             $counter++;
         }
+        echo '<table boarder="1" style="width:30%" align=center>';
+        echo '<tr>';
+        echo '<td>Account</td>';
+        echo '<td>Password</td>';
+        echo '<td>Comment</td>';
+        echo '</tr>';
+        for($i =  (count($accountArray) - 1); $i >= 0; $i-- ){
+            echo "<tr>";
+            echo "<td>". $accountArray[$i]. "</td>";
+            echo "<td>". $passkeyArray[$i]. "</td>";
+            echo "<td>". $commentArray[$i]. "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        echo "<br>";
+    }
+    else{
+        echo "<p align=center>You don't have any account info yet</p>";
     }
     
     
-    echo '<table boarder="1" style="width:30%">';
-    echo '<tr>';
-    echo '<td>Account</td>';
-    echo '<td>Password</td>';
-    echo '<td>Comment</td>';
-    echo '</tr>';
-    for($i =  (count($accountArray) - 1); $i >= 0; $i-- ){
-        echo "<tr>";
-        echo "<td>". $accountArray[$i]. "</td>";
-        echo "<td>". $passkeyArray[$i]. "</td>";
-        echo "<td>". $commentArray[$i]. "</td>";
-        echo "</tr>";
-    }
-    echo "</table>";
-    echo "<br>";
 
 
     ?>
@@ -96,10 +100,13 @@
     
     
 // If the values are posted, insert them into the database.
-    if (!empty($wid) && !empty($uid)) {
-        $account = $_POST["account"];
-        $password = $_POST["password"];
+    $account = $_POST["account"];
+    $password = $_POST["password"];
+
+    if (!empty($account) && !empty($password)) {
         $comment = $_POST["comment"];
+        
+        $result =0;
         
         if(!empty($account) && !empty($password)){
                 $query = "INSERT INTO `cs340_chencho`.`key_pb` (wid, account, passkey, comment) VALUES ('$wid', '$account', '$password', '$comment' )";
@@ -109,7 +116,7 @@
             if($result == 1){
                 $msg = "<p align=center>Account entered.</p>";
                 echo $msg;
-                header("location: enterPassword.php?wid=$wid");
+                echo '<p align = center>Refresh the page <a href = "enterPassword.php?wid=' .$wid. '">here </a></p>';
             }
             else {
                 echo "Failed to insert";
@@ -126,11 +133,6 @@
         
 
     }
-    else{
-        echo "You are not logined or don't have a wid to enter this page";
-    }
-
-    
 mysqli_close($conn);
 ?>
 <br>
