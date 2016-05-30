@@ -1,9 +1,9 @@
 <?php 
-    $wid = $_GET["wid"];
+    $sid = $_GET["sid"];
     $uid = $_SESSION["uid"];
     if (!empty($uid)){
-        if (!empty($wid)){
-            $sqlVerify = "SELECT * FROM `cs340_chencho`.`web_pb` WHERE uid = $uid AND wid = $wid ";
+        if (!empty($sid)){
+            $sqlVerify = "SELECT * FROM `cs340_chencho`.`style_pb` WHERE uid = $uid AND sid = $sid ";
             $result = $conn->query($sqlVerify);
             if ($result->num_rows < 1){
                 exit("You don't have the permission to access this page.");
