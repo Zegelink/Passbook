@@ -8,6 +8,8 @@
     include 'connect.php';
     //make sure the user logined has the permission to this wid
     include 'widVerify.php';
+    include 'deletePassword.php';
+
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,16 +34,6 @@
 </head>
 
 <body>
-
-<script>
-function genPass(){
-    return;
-}
-
-function randomString(length) {
-    return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-}
-</script>
 
 <div class="container">
 
@@ -152,7 +144,8 @@ function randomString(length) {
 ?>
 <br>
 
-<?php    $sql = "SELECT * FROM `cs340_chencho`.`key_pb` WHERE wid = $wid";
+<?php
+    $sql = "SELECT * FROM `cs340_chencho`.`key_pb` WHERE wid = $wid";
     $result = $conn->query($sql);
     
     if ($result->num_rows > 0 ){
@@ -160,11 +153,13 @@ function randomString(length) {
         $accountArray;
         $passkeyArray;
         $commentArray;
+        $kidArray;
         while($row = $result->fetch_assoc()){
             
             $accountArray[$counter] = $row["account"];
             $passkeyArray[$counter] = $row["passkey"];
             $commentArray[$counter] = $row["comment"];
+            $kidArray[$counter] = $row["kid"];
             
             $counter++;
         }
@@ -179,6 +174,11 @@ function randomString(length) {
             echo "<td>". $accountArray[$i]. "</td>";
             echo "<td>". $passkeyArray[$i]. "</td>";
             echo "<td>". $commentArray[$i]. "</td>";
+
+            echo '<td><form action ="enterPassword.php?wid='. $wid. '" class="form-signin" method="post" role="form">';
+            echo '<button type = "submit", value = "'.$kidArray[$i]. '">Delete </button>';
+            echo '</form></td>';
+
             echo "</tr>";
         }
         echo "</table>";
