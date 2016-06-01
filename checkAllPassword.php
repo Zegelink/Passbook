@@ -5,33 +5,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="style.css" rel="stylesheet">
-
-<titile> Password Mangement</titile>
+<titile> Your password</titile>
 </head>
 <body>
+
 <?php
-
-echo '<div><a href="enterName.php">Enter Name </a> </div>';
-
     include 'connect.php';
     $uid = $_SESSION['uid'];
-    $sql = "SELECT * FROM `cs340_chencho`.`web_pb` WHERE uid = $uid";
+    $sql = "SELECT * FROM `cs340_chencho`.`web_pb` NATURAL JOIN `cs340_chencho`.`key_pb` WHERE uid = $uid";
     $result = $conn->query($sql);
     
     
     
     if ($result->num_rows > 0 ){
         $counter = 0;
-        $CourseNumberArray;
-        $DepartmentArray;
-        $cidArray;
-
-        
         while($row = $result->fetch_assoc()){
             
-            $widArray[$counter] = $row["wid"];
             $nameArray[$counter] = $row["name"];
+            $accountArray[$counter] = $row["account"];
+            $passkeyArray[$counter] = $row["passkey"];
+            $commentArray[$counter] = $row["comment"];
+
+            
             
             echo $result1;
             $counter++;
@@ -41,15 +36,19 @@ echo '<div><a href="enterName.php">Enter Name </a> </div>';
     
     echo '<table boarder="1" style="width:30%">';
     echo '<tr>';
-    echo '<td>wid</td>';
-    echo '<td>name</td>';
+    echo '<td>Name</td>';
+    echo '<td>Account</td>';
+    echo '<td>Password</td>';
+    echo '<td>Comment</td>';
+
     echo '</tr>';
-    for($i =  (count($widArray) - 1); $i >= 0; $i-- ){
+    for($i =  (count($nameArray) - 1); $i >= 0; $i-- ){
         echo "<tr>";
-        echo "<td>$widArray[$i]</td>";
-        //pass the wid into next link
-        echo '<td><a href="enterPassword.php?wid=' .$widArray[$i]. '">' .$nameArray[$i]. '</a> <td>';
-        
+        echo "<td>$nameArray[$i]</td>";
+        echo "<td>$accountArray[$i]</td>";
+        echo "<td>$passkeyArray[$i]</td>";
+        echo "<td>$commentArray[$i]</td>";
+
         echo "</tr>";
     }
     echo "</table>";

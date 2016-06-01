@@ -5,7 +5,6 @@
     $styleSelected = $_POST['styleSelected'];
     
     $deleteKey = $_POST['deleteKey'];
-    echo $styleSelected;
     
     include 'connect.php';
     //make sure the user logined has the permission to this wid

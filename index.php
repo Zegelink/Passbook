@@ -41,9 +41,8 @@
         echo " Welcome back! ";
         echo ($_SESSION["username"]);
         echo '<br>';
-        echo '<a href="enterName.php">  Enter Password</a>';
-        echo '<br>';
-        echo '<div><a href="checkExistingPassword.php">Check Password  </a> </div>';
+        echo '<div><a href="checkExistingPassword.php">Password Mangement </a></div>';
+        echo '<div><a href="checkAllPassword.php"> Check All Password</a></div>';
         echo '<div><a href="enterStyle.php"> Customise Password Style</a></div>';
         echo '<div><a href="checkExistingStyle.php"> Check Your Style</a></div>';
 
