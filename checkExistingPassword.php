@@ -5,14 +5,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>ManagePassword</title>
+
+<!-- Bootstrap  CSS and FontAwesome too -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- Custom styles for this template -->
 <link href="style.css" rel="stylesheet">
 
-<titile> Password Mangement</titile>
 </head>
+
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
 <body>
+<div w3-include-html="navBar.html"></div>
+<script>
+w3IncludeHTML();
+</script>
 <?php
 
-echo '<div><a href="enterName.php">Enter Name </a> </div>';
+echo '<div><a href="enterName.php">New Name </a> </div>';
+    echo '<br>';
 
     include 'connect.php';
     $uid = $_SESSION['uid'];
@@ -39,14 +52,14 @@ echo '<div><a href="enterName.php">Enter Name </a> </div>';
     }
 
     
-    echo '<table boarder="1" style="width:30%">';
+    echo '<table align = center boarder="1" style="width:30%" >';
     echo '<tr>';
-    echo '<td>wid</td>';
+    //echo '<td>wid</td>';
     echo '<td>name</td>';
     echo '</tr>';
     for($i =  (count($widArray) - 1); $i >= 0; $i-- ){
         echo "<tr>";
-        echo "<td>$widArray[$i]</td>";
+        //echo "<td>$widArray[$i]</td>";
         //pass the wid into next link
         echo '<td><a href="enterPassword.php?wid=' .$widArray[$i]. '">' .$nameArray[$i]. '</a> <td>';
         
@@ -60,7 +73,6 @@ echo '<div><a href="enterName.php">Enter Name </a> </div>';
 
 
 <br>
-<a style="color: rgb(51, 51, 255);" href="index.php">Index page<br>
 <br>
 
 </body>
