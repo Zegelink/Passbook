@@ -3,12 +3,13 @@
     $wid = $_GET['wid'];
     $uid = $_SESSION['uid'];
     $styleSelected = $_POST['styleSelected'];
+    
+    $deleteKey = $_POST['deleteKey'];
     echo $styleSelected;
     
     include 'connect.php';
     //make sure the user logined has the permission to this wid
     include 'widVerify.php';
-    include 'deletePassword.php';
 
     ?>
 <!DOCTYPE html>
@@ -145,6 +146,8 @@
 <br>
 
 <?php
+    include 'deletePassword.php';
+
     $sql = "SELECT * FROM `cs340_chencho`.`key_pb` WHERE wid = $wid";
     $result = $conn->query($sql);
     
@@ -176,7 +179,7 @@
             echo "<td>". $commentArray[$i]. "</td>";
 
             echo '<td><form action ="enterPassword.php?wid='. $wid. '" class="form-signin" method="post" role="form">';
-            echo '<button type = "submit", value = "'.$kidArray[$i]. '">Delete </button>';
+            echo '<button name = "deleteKey", type = "submit", value = "'.$kidArray[$i]. '">Delete</button>';
             echo '</form></td>';
 
             echo "</tr>";
