@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include 'connect.php';
+    $deleteKey = $_POST['deleteKey'];
     ?>
 
 <!DOCTYPE html>
@@ -23,13 +25,23 @@
 w3IncludeHTML();
 </script>
 <?php
-
-echo '<a href="enterName.php">New Name </a>';
+    
+    //delte category
+    if (!empty($deleteKey)){
+        $sqlStyle = "DELETE FROM `cs340_chencho`.`web_pb` WHERE wid = $deleteKey";
+        if ($resultStyle = $conn->query($sqlStyle)){
+            $message = "Delete Successfully";
+        }
+        else{
+            $message = "Delete Failed";
+        }
+    }
+    
+    echo '<a href="enterName.php">New Category </a>';
     echo '<br>';
     echo '<a align = "right" href="checkAllPassword.php">All Password </a>';
 
 
-    include 'connect.php';
     $uid = $_SESSION['uid'];
     $sql = "SELECT * FROM `cs340_chencho`.`web_pb` WHERE uid = $uid";
     $result = $conn->query($sql);
@@ -54,21 +66,30 @@ echo '<a href="enterName.php">New Name </a>';
     }
 
     
-    echo '<table align = center boarder="1" style="width:30%" >';
+    echo '<table align = "center" style="width:40%" >';
     echo '<tr>';
-    //echo '<td>wid</td>';
-    echo '<td>name</td>';
+    echo '<th>Category</th>';
     echo '</tr>';
     for($i =  (count($widArray) - 1); $i >= 0; $i-- ){
-        echo "<tr>";
+        echo '<tr>';
         //echo "<td>$widArray[$i]</td>";
-        //pass the wid into next link
-        echo '<td><a href="enterPassword.php?wid=' .$widArray[$i]. '">' .$nameArray[$i]. '</a> <td>';
         
-        echo "</tr>";
+        //pass the wid into next link
+        echo '<td><a href="enterPassword.php?wid=' .$widArray[$i]. '">' .$nameArray[$i]. '</a></td>';
+        
+        //the delete button form
+        echo '<td><form action ="checkExistingPassword.php" class="form-signin" method="post" role="form">';
+        echo '<button name = "deleteKey", type = "submit", value = "'.$widArray[$i]. '">Delete</button>';
+        echo '</form></td>';
+        
+        echo '</tr>';
     }
-    echo "</table>";
-    echo "<br>";
+    echo '</table>';
+    echo '<br>';
+    
+    echo '<p align="center">' .$message. '</p>';
+    
+    mysqli_close($conn);
 
         ?>
 <br>

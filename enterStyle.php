@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include 'connect.php';
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +34,7 @@
 
 
 <?php
-include 'connect.php';
+
     
 // If the values are posted, insert them into the database.
     if (!empty($_POST["style"])) {
@@ -64,16 +65,6 @@ include 'connect.php';
                 echo "Failed to update";
             }
         }
-
-
-
-        //find the student ID in the database
-        //if the number of ID is not equal to 1
-        
-        //find the student ID in the database
-        //if the number of ID is not equal to 1
-        
-
     }
     else{
     }

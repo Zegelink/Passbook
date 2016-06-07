@@ -163,11 +163,11 @@ w3IncludeHTML();
             $counter++;
         }
         echo '<table boarder="1" style="width:60%" align=center>';
-        echo '<tr>';
+        echo '<th>';
         echo '<td>Account</td>';
         echo '<td>Password</td>';
         echo '<td>Comment</td>';
-        echo '</tr>';
+        echo '</th>';
         for($i =  (count($accountArray) - 1); $i >= 0; $i-- ){
             echo "<tr>";
             echo "<td>". $accountArray[$i]. "</td>";
