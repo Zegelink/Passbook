@@ -5,9 +5,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<titile> Your password</titile>
+<title> All password</title>
+<!-- Bootstrap  CSS and FontAwesome too -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+<!-- Custom styles for this template -->
+<link href="style.css" rel="stylesheet">
+
 </head>
+
+<script src="http://www.w3schools.com/lib/w3data.js"></script>
 <body>
+<div w3-include-html="navBar.html"></div>
+<script>
+w3IncludeHTML();
+</script>
 
 <?php
     include 'connect.php';
@@ -34,7 +47,7 @@
     }
 
     
-    echo '<table boarder="1" style="width:30%">';
+    echo '<table align = "center" boarder="1" style="width:60%">';
     echo '<tr>';
     echo '<td>Name</td>';
     echo '<td>Account</td>';
@@ -59,7 +72,6 @@
 
 
 <br>
-<a style="color: rgb(51, 51, 255);" href="index.php">Index page<br>
 <br>
 
 </body>

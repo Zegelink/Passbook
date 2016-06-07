@@ -24,8 +24,10 @@ w3IncludeHTML();
 </script>
 <?php
 
-echo '<div><a href="enterName.php">New Name </a> </div>';
+echo '<a href="enterName.php">New Name </a>';
     echo '<br>';
+    echo '<a align = "right" href="checkAllPassword.php">All Password </a>';
+
 
     include 'connect.php';
     $uid = $_SESSION['uid'];

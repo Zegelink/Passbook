@@ -93,7 +93,7 @@ w3IncludeHTML();
         }
         echo '<form action ="enterPassword.php?wid='. $wid. '" class="form-signin" method="post" role="form">';
         echo '<select name="styleSelected" onchange="randomString(5)" required>';
-    for ($i =  (count($styleArray) - 1); $i >= 0; $i-- ){
+    for ($i = 0 ; $i <= (count($styleArray) -1); $i++ ){
         $value = $sidArray[$i];
         echo '<option value="'. $value. '">'. $styleArray[$i]. '</option>';
     }
@@ -162,7 +162,7 @@ w3IncludeHTML();
             
             $counter++;
         }
-        echo '<table boarder="1" style="width:30%" align=center>';
+        echo '<table boarder="1" style="width:60%" align=center>';
         echo '<tr>';
         echo '<td>Account</td>';
         echo '<td>Password</td>';
