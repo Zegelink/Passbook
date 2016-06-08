@@ -56,21 +56,33 @@ w3IncludeHTML();
             $counter++;
         }
     }
-    echo '<div><a href="enterStyle.php">New Style </a> </div>';
+	//guiding message
+	echo '<div align = center>';
+	echo '<p align= "center" class="text-primary bg-info" style = "width: 30%">Styles are used to generate a password just for you!';
+	echo '<br>';
+	echo 'You can add your favorite words to different styles!';
+	echo '<br>';
+	echo 'Start with a new style or add items to your styles!</p>';
+	echo '</div>';
+	
+	echo '<br>';
+    echo '<div align = center><a class="btn btn-primary" style = "width: 10%" href="enterStyle.php">New Style </a> </div>';
+	echo '<br>'; 
+   	echo '<br>';
 
-    
     echo '<table boarder="1" style="width:30%" align = center>';
     echo '<tr>';
-    echo '<th>Those Style you have in your Library</th>';
+    echo '<th>Style</th>';
+	echo '<th></th>';
     echo '</tr>';
     for($i =  (count($sidArray) - 1); $i >= 0; $i-- ){
         echo "<tr>";
         //pass the sid into next link
-        echo '<td><a href="enterItem.php?sid=' .$sidArray[$i]. '">' .$styleArray[$i]. '</a> </td>';
+        echo '<td><a " href="enterItem.php?sid=' .$sidArray[$i]. '">' .$styleArray[$i]. '</a> </td>';
         
         //delete button
         echo '<td><form action ="checkExistingStyle.php" class="form-signin" method="post" role="form">';
-        echo '<button name = "deleteKey", type = "submit", value = "'.$sidArray[$i]. '">Delete</button>';
+        echo '<button class = "btn btn-danger" name = "deleteKey", type = "submit", value = "'.$sidArray[$i]. '">Delete</button>';
         echo '</form></td>';
 
         

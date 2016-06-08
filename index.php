@@ -34,7 +34,7 @@ w3IncludeHTML();
 </script>
 
 <?php
-    $sqlStyle = "call ReturnMostActiveUser()";
+    $sqlStyle = "SELECT * FROM `MostPopularCatagory`";
     $resultStyle = $conn->query($sqlStyle);
     
     if ($resultStyle->num_rows > 0 ){
@@ -48,12 +48,49 @@ w3IncludeHTML();
         $uidArray;
         while ($row = $resultStyle->fetch_assoc()){
             $numArray[$counter] = $row["num"];
+            $uidArray[$counter] = $row["name"];
+            $counter++;
+        }
+        echo '<table style="width:30%" align=center>';
+        echo '<tr>';
+        echo '<th>Most Popular Website</th>';
+        echo '<th>Points</th>';
+        echo '</tr>';
+        $num = (count($uidArray));
+        if ($num > 3){
+            $num = 3;
+        }
+        for($i = 0 ; $i < $num; $i++ ){
+            echo "<tr>";
+            echo "<td>". $uidArray[$i]. "</td>";
+            echo "<td>". $numArray[$i]. "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+        echo "<br>";
+		echo "<br>";
+
+    }
+	
+?>
+
+<?php
+    $sqlStyle = "call ReturnMostActiveUser()";
+    $resultStyle = $conn->query($sqlStyle);
+    
+    if ($resultStyle->num_rows > 0 ){
+
+        $counter = 0;
+        $numArray;
+        $uidArray;
+        while ($row = $resultStyle->fetch_assoc()){
+            $numArray[$counter] = $row["num"];
             $uidArray[$counter] = $row["username"];
             $counter++;
         }
         echo '<table style="width:30%" align=center>';
         echo '<tr>';
-        echo '<th>MostActiveUser</th>';
+        echo '<th>Most Active User</th>';
         echo '<th>Points</th>';
         echo '</tr>';
         $num = (count($uidArray));
@@ -69,9 +106,9 @@ w3IncludeHTML();
         echo "</table>";
         echo "<br>";
     }
-    
-    
+	
 ?>
+
 </body>
 
 </html>

@@ -47,12 +47,12 @@ w3IncludeHTML();
     }
 
     
-    echo '<table align = "center" boarder="1" style="width:60%">';
+    echo '<table align = "center" boarder="1" style="width:40%">';
     echo '<tr>';
-    echo '<td>Name</td>';
-    echo '<td>Account</td>';
-    echo '<td>Password</td>';
-    echo '<td>Comment</td>';
+    echo '<th>Category</th>';
+    echo '<th>Account</th>';
+    echo '<th>Password</th>';
+    echo '<th>Comment</th>';
 
     echo '</tr>';
     for($i =  (count($nameArray) - 1); $i >= 0; $i-- ){

@@ -37,10 +37,18 @@ w3IncludeHTML();
         }
         
     }
+	
+	//guiding message
+	echo '<div align = center>';
+	echo '<p align= "center" class="text-primary bg-info" style = "width: 30%">You can save multiple passwords in one category!';
+	echo '<br>';
+	echo 'Start with a new Category or add info to your category!</p>';
+	echo '</div>';
+	
+	echo '<br>';
 
-
-    echo '<p align=center><a href="enterName.php">New Name </a></p>';
-    echo '<p align=center><a href="checkAllPassword.php">All Password </a></p>';
+    echo '<p align="center"><a class="btn btn-primary" style = "width: 10%"  href="enterName.php">New Category</a></p>';
+    echo '<p align=center><a class="btn btn-primary " role="button" style = "width: 10%" href="checkAllPassword.php">List All Password </a></p>';
 
     $uid = $_SESSION['uid'];
     $sql = "SELECT * FROM `cs340_chencho`.`web_pb` WHERE uid = $uid";
@@ -64,9 +72,9 @@ w3IncludeHTML();
             $counter++;
         }
     }
+		echo '<br>';
 
-    
-    echo '<table align = center style="width:20%" >';
+    echo '<table align = center style="width:30%" >';
     echo '<tr>';
     //echo '<td>wid</td>';
     echo '<th>Category</th>';
@@ -80,7 +88,7 @@ w3IncludeHTML();
         
         //delete button
         echo '<td><form action ="checkExistingPassword.php" class="form-signin" method="post" role="form">';
-        echo '<button name = "deleteKey", type = "submit", value = "'.$widArray[$i]. '">Delete</button>';
+        echo '<button name = "deleteKey", class = "btn btn-danger" type = "submit", value = "'.$widArray[$i]. '">Delete</button>';
         echo '</form></td>';
         
         echo "</tr>";
