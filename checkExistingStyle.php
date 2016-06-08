@@ -30,7 +30,7 @@ w3IncludeHTML();
     
     //delete
     if (!empty($deleteKey)){
-        $sqlStyle = "DELETE FROM `cs340_chencho`.`web_pb` WHERE wid = $deleteKey";
+        $sqlStyle = "DELETE FROM `cs340_chencho`.`style_pb` WHERE sid = $deleteKey";
         if ($resultStyle = $conn->query($sqlStyle)){
             $message = "Delete Successful";
         }
