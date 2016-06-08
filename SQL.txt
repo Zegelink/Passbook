@@ -1,0 +1,3 @@
+create view MostPopularCatagory as 
+SELECT name, count(*) as num from web_pb natural join key_pb
+group by name ORDER BY num DESC
