@@ -32,7 +32,9 @@ w3IncludeHTML();
 <div class="container">
 
 <form action="enterItem.php?sid=<?php echo $sid ?>" class="form-signin" method="post" role="form">
-<h2 class="form-signin-heading" align="center"><b>Enter New Item: </b></h2>
+<?php
+	echo '<h2 class="form-signin-heading" align="center"><b>New Item for '.$style.': </b></h2>';
+?>
 <br>
 <label for="name">Item</label>
 <input type="text" id="item" name="item"class="form-control" placeholder="" required autofocus>

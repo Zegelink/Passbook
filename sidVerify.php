@@ -8,6 +8,10 @@
             if ($result->num_rows < 1){
                 exit("You don't have the permission to access this page.");
             }
+			else {
+				$row = $result->fetch_assoc();
+				$style = $row["style"];
+			}
         }
         else{
             exit("You don't have the permission to access this page.");

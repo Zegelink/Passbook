@@ -32,12 +32,39 @@
 w3IncludeHTML();
 </script>
 
+<?php
+    $sqlStyle = "SELECT * FROM `cs340_chencho`.`style_pb` WHERE uid = $uid OR uid = -1";
+    $resultStyle = $conn->query($sqlStyle);
+    if ($resultStyle->num_rows > 0 ){
+        $counter1 = 0;
+        $sidArray;
+        while ($row = $resultStyle->fetch_assoc()){
+            $styleArray[$counter1] = $row["style"];
+            $sidArray[$counter1] = $row["sid"];
+            $counter1++;
+        }
+        echo '<form action ="enterPassword.php?wid='. $wid. '" class="form-signin" method="post" role="form">';
+        echo '<select name="styleSelected" onchange="randomString(5)" required>';
+		for ($i = 0 ; $i <= (count($styleArray) -1); $i++ ){
+			$value = $sidArray[$i];
+			echo '<option value="'. $value. '">'. $styleArray[$i]. '</option>';
+    }
+    echo '</select>';
+    echo '<input type = "submit" class = "btn btn-primary" value="GeneratePassword">';
+    echo '</form>';
+    }
+    ?>
+
+
 <div class="container">
 
 <form action="enterPassword.php?wid=<?php echo $wid ?>" class="form-signin" method="post" role="form">
-<h2 class="form-signin-heading" align="center"><b>Enter New Account: </b></h2>
+<?php
+
+echo '<h2 class="form-signin-heading" align="center"><b>New User for '.$name.': </b></h2>';
+?>
 <br>
-<label for="name">Account</label>
+<label for="name">Username</label>
 <input type="text" id="account" name="account"class="form-control" placeholder="" required autofocus>
 
 <label for="sid">Password</label>
@@ -80,28 +107,7 @@ w3IncludeHTML();
 
 </div> <!-- /container -->
 
-<?php
-    $sqlStyle = "SELECT * FROM `cs340_chencho`.`style_pb` WHERE uid = $uid OR uid = -1";
-    $resultStyle = $conn->query($sqlStyle);
-    if ($resultStyle->num_rows > 0 ){
-        $counter1 = 0;
-        $sidArray;
-        while ($row = $resultStyle->fetch_assoc()){
-            $styleArray[$counter1] = $row["style"];
-            $sidArray[$counter1] = $row["sid"];
-            $counter1++;
-        }
-        echo '<form action ="enterPassword.php?wid='. $wid. '" class="form-signin" method="post" role="form">';
-        echo '<select name="styleSelected" onchange="randomString(5)" required>';
-    for ($i = 0 ; $i <= (count($styleArray) -1); $i++ ){
-        $value = $sidArray[$i];
-        echo '<option value="'. $value. '">'. $styleArray[$i]. '</option>';
-    }
-    echo '</select>';
-    echo '<input type = "submit" value="GeneratePassword">';
-    echo '</form>';
-    }
-    ?>
+
 
 <?php
 // If the values are posted, insert them into the database.
@@ -126,15 +132,6 @@ w3IncludeHTML();
             else {
                 echo "Failed to insert";
             }
-        
-
-
-
-        //find the student ID in the database
-        //if the number of ID is not equal to 1
-        
-        //find the student ID in the database
-        //if the number of ID is not equal to 1
         
 
     }
