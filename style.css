@@ -48,8 +48,21 @@ body {
 title{
     font size = "6";
     text-align: center;
-
 }
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #ffffff}
+tr:nth-child(odd){background-color: #e6e6e6}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
 
 .navbar {
     margin-bottom: 20px;

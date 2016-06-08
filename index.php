@@ -39,7 +39,7 @@ w3IncludeHTML();
     
     if ($resultStyle->num_rows > 0 ){
         echo '<br>';
-        echo '<p align = center> Welcome back '.$_SESSION["username"].'! </p>';
+        echo '<h1><p align = center> Welcome back '.$_SESSION["username"].'!</p></h1>';
         //echo '<a align = center>'. $_SESSION["username"]. '</a>';
         echo '<br>';
 
@@ -51,10 +51,10 @@ w3IncludeHTML();
             $uidArray[$counter] = $row["username"];
             $counter++;
         }
-        echo '<table boarder="1" style="width:30%" align=center>';
+        echo '<table style="width:30%" align=center>';
         echo '<tr>';
-        echo '<td>MostActiveUser</td>';
-        echo '<td>Points</td>';
+        echo '<th>MostActiveUser</th>';
+        echo '<th>Points</th>';
         echo '</tr>';
         $num = (count($uidArray));
         if ($num > 3){
@@ -71,16 +71,6 @@ w3IncludeHTML();
     }
     
     
-    
-    
-         /*echo '<div><a href="checkExistingPassword.php">Password Mangement </a></div>';
-     echo '<div><a href="checkAllPassword.php"> Check All Password</a></div>';
-     echo '<div><a href="enterStyle.php"> Customise Password Style</a></div>';
-     echo '<div><a href="checkExistingStyle.php"> Check Your Style</a></div>';
-     
-     echo '<div><a href="logout.php"> Logout</a></div>';
-     */
-
 ?>
 </body>
 

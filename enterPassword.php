@@ -162,12 +162,14 @@ w3IncludeHTML();
             
             $counter++;
         }
-        echo '<table boarder="1" style="width:60%" align=center>';
-        echo '<th>';
-        echo '<td>Account</td>';
-        echo '<td>Password</td>';
-        echo '<td>Comment</td>';
-        echo '</th>';
+        echo '<h2><p align = center>This is your password table</p></h2>';
+        echo '<table style="width:60%" align=center>';
+        echo '<tr>';
+        echo '<th>Account</th>';
+        echo '<th>Password</th>';
+        echo '<th>Comment</th>';
+        echo '<th> </th>';
+        echo '</tr>';
         for($i =  (count($accountArray) - 1); $i >= 0; $i-- ){
             echo "<tr>";
             echo "<td>". $accountArray[$i]. "</td>";

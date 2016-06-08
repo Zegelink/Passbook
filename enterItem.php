@@ -94,7 +94,8 @@ w3IncludeHTML();
         }
         echo '<table boarder="1" style="width:30%" align=center>';
         echo '<tr>';
-        echo '<td>Item</td>';
+        echo '<th>Item</th>';
+        echo '<th> </th>';
         echo '</tr>';
         for($i =  (count($itemArray) - 1); $i >= 0; $i-- ){
             echo "<tr>";
