@@ -20,9 +20,9 @@
 <div class="container">
 
 <form action="enterName.php" class="form-signin" method="post" role="form">
-<h2 class="form-signin-heading" align="center"><b>Enter Name: </b></h2>
+<h2 class="form-signin-heading" align="center"><b>Enter New Category: </b></h2>
 <br>
-<label for="name">Name</label>
+<label for="name">Category</label>
 <input type="text" id="name" name="name"class="form-control" placeholder="" required autofocus>
 
 <button class="btn btn-lg btn-success btn-block" type="submit">Confirm</button>
@@ -43,7 +43,7 @@ include 'connect.php';
         $selectresult = mysqli_query($conn, $slquery);
         if(mysqli_num_rows($selectresult) == 1)
         {
-            $errorMessage = '<p align=center>The name is already exist</p>';
+            $errorMessage = '<p align=center>The name already existed</p>';
             echo $errorMessage . "<br>";
             echo '<div class="form-actions"><a href="checkExistingPassword.php" role="button" class="btn btn-lg btn-success">Proceed to enter password</a></div>';
 

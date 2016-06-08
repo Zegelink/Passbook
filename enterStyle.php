@@ -21,7 +21,7 @@
 <div class="container">
 
 <form action="enterStyle.php" class="form-signin" method="post" role="form">
-<h2 class="form-signin-heading" align="center"><b>Enter Style: </b></h2>
+<h2 class="form-signin-heading" align="center"><b>Enter New Style: </b></h2>
 <br>
 <label for="name">Style</label>
 <input type="text" id="style" name="style"class="form-control" placeholder="" required autofocus>

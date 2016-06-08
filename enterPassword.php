@@ -120,8 +120,16 @@ echo '<h2 class="form-signin-heading" align="center"><b>New User for '.$name.': 
         $result =0;
         
         if(!empty($account) && !empty($password)){
+			$slquery = "SELECT 1 FROM `cs340_chencho`.`key_pb` WHERE account = '$account' AND wid = '$wid' ";
+			$selectresult = mysqli_query($conn, $slquery);
+			if(mysqli_num_rows($selectresult) == 1){
+				$errorMessage = '<p align=center>This username already existed</p>';
+				echo $errorMessage . "<br>";
+			}
+			else {
                 $query = "INSERT INTO `cs340_chencho`.`key_pb` (wid, account, passkey, comment) VALUES ('$wid', '$account', '$password', '$comment' )";
                 $result = mysqli_query($conn,$query);
+				}
             }
             
             if($result == 1){
@@ -130,7 +138,7 @@ echo '<h2 class="form-signin-heading" align="center"><b>New User for '.$name.': 
                 //echo '<p align = center>Refresh the page <a href = "enterPassword.php?wid=' .$wid. '">here </a></p>';
             }
             else {
-                echo "Failed to insert";
+                echo "<p align = center>Failed to insert</p>";
             }
         
 

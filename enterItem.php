@@ -104,7 +104,7 @@ w3IncludeHTML();
             echo "<td>". $itemArray[$i]. "</td>";
             //delete button
             echo '<td><form action ="enterItem.php?sid='. $sid. '" class="form-signin" method="post" role="form">';
-            echo '<button name = "deleteKey", type = "submit", value = "'.$iidArray[$i]. '">Delete</button>';
+            echo '<button class = "btn btn-danger" name = "deleteKey", type = "submit", value = "'.$iidArray[$i]. '">Delete</button>';
             echo '</form></td>';
 
             echo "</tr>";
