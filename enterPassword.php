@@ -177,7 +177,7 @@ w3IncludeHTML();
             echo "<td>". $commentArray[$i]. "</td>";
 
             echo '<td><form action ="enterPassword.php?wid='. $wid. '" class="form-signin" method="post" role="form">';
-            echo '<button name = "deleteKey", type = "submit", value = "'.$kidArray[$i]. '">Delete</button>';
+            echo '<button class = "btn btn-danger" name = "deleteKey", type = "submit", value = "'.$kidArray[$i]. '">Delete</button>';
             echo '</form></td>';
 
             echo "</tr>";

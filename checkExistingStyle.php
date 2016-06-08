@@ -1,5 +1,7 @@
 <?php
     session_start();
+    $deleteKey = $_POST['deleteKey'];
+    include 'connect.php';
     ?>
 
 <!DOCTYPE html>
@@ -25,7 +27,18 @@ w3IncludeHTML();
 
 
 <?php
-    include 'connect.php';
+    
+    //delete
+    if (!empty($deleteKey)){
+        $sqlStyle = "DELETE FROM `cs340_chencho`.`web_pb` WHERE wid = $deleteKey";
+        if ($resultStyle = $conn->query($sqlStyle)){
+            $message = "Delete Successful";
+        }
+        else{
+            $message = "Delete Failed";
+        }
+        
+    }
     $uid = $_SESSION['uid'];
     $sql = "SELECT * FROM `cs340_chencho`.`style_pb` WHERE uid = $uid";
     $result = $conn->query($sql);
@@ -55,12 +68,18 @@ w3IncludeHTML();
         //pass the sid into next link
         echo '<td><a href="enterItem.php?sid=' .$sidArray[$i]. '">' .$styleArray[$i]. '</a> </td>';
         
+        //delete button
+        echo '<td><form action ="checkExistingStyle.php" class="form-signin" method="post" role="form">';
+        echo '<button name = "deleteKey", type = "submit", value = "'.$sidArray[$i]. '">Delete</button>';
+        echo '</form></td>';
+
+        
         echo "</tr>";
     }
     echo "</table>";
     echo "<br>";
-    echo "<br>";
 
+    echo '<p align = "center">' .$message. '</p>';
 
         ?>
 <br>
