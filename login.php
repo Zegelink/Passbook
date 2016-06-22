@@ -17,20 +17,28 @@ session_start();
 include 'connect.php';
 
 $username = $_POST["username"];
-$password = md5($_POST["password"]);
+$password = $_POST["password"];
 
 if (!empty($username) && !empty($password)) {
-    $input = "SELECT uid FROM user_pb WHERE username = '$username' AND password = '$password'";
+    $input = "SELECT * FROM user_pb WHERE username = '$username'";
     $query = mysqli_query($conn, $input) or die(mysqli_error($conn)); 
     $count = mysqli_num_rows($query);
     $row = mysqli_fetch_array($query, MYSQLI_ASSOC);
     if ($count != 0) {
-        $_SESSION["uid"] = $row["uid"];
-        $_SESSION["username"] = $username;
-        echo "<br><p align=center>Login Success! Welcome, " . $_SESSION["username"]. "!</p><br>";
-        echo '<div class="form-actions"><a href="index.php" role="button" class="btn btn-lg btn-success"> Click here to proceed to home page</a></div>';
+        $colpassword = $row["password"];
+        if (password_verify($password, $colpassword)) {
+            $_SESSION["uid"] = $row["uid"];
+            $_SESSION["username"] = $username;
+            echo "<br><p align=center>Login Success! Welcome, " . $_SESSION["username"]. "!</p><br>";
+            echo '<div class="form-actions"><a href="index.php" role="button" class="btn btn-lg btn-success"> Click here to proceed to home page</a></div>';
+        }
+        else{
+            echo "<p align=center>Wrong password</p>";
+            echo '<div class="form-actions"><a href="login.html" role="button" class="btn btn-lg btn-danger"> Click here to retry</a></div>';
+            
+        }
     } else {
-        echo "<br><p align=center>Sorry, invalid Username OR Password. </p><br>";
+        echo "<br><p align=center>Sorry, invalid Username. </p><br>";
         echo '<div class="form-actions"><a href="login.html" role="button" class="btn btn-lg btn-danger"> Click here to retry</a></div>';
     }
 }    

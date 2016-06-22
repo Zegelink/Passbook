@@ -84,11 +84,11 @@ w3IncludeHTML();
         echo "<tr>";
         //echo "<td>$widArray[$i]</td>";
         //pass the wid into next link
-        echo '<td><a href="enterPassword.php?wid=' .$widArray[$i]. '">' .$nameArray[$i]. '</a> </td>';
+        echo '<td><a class="btn btn-info" style="width:70%" href="enterPassword.php?wid=' .$widArray[$i]. '">' .$nameArray[$i]. '</a> </td>';
         
         //delete button
         echo '<td><form action ="checkExistingPassword.php" class="form-signin" method="post" role="form">';
-        echo '<button name = "deleteKey", class = "btn btn-danger" type = "submit", value = "'.$widArray[$i]. '">Delete</button>';
+        echo '<button name = "deleteKey", class = "btn btn-danger btn-sm" type = "submit", value = "'.$widArray[$i]. '">Delete</button>';
         echo '</form></td>';
         
         echo "</tr>";

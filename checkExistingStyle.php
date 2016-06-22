@@ -78,11 +78,11 @@ w3IncludeHTML();
     for($i =  (count($sidArray) - 1); $i >= 0; $i-- ){
         echo "<tr>";
         //pass the sid into next link
-        echo '<td><a " href="enterItem.php?sid=' .$sidArray[$i]. '">' .$styleArray[$i]. '</a> </td>';
+        echo '<td><a class="btn btn-info" style="width:70%" href="enterItem.php?sid=' .$sidArray[$i]. '">' .$styleArray[$i]. '</a> </td>';
         
         //delete button
         echo '<td><form action ="checkExistingStyle.php" class="form-signin" method="post" role="form">';
-        echo '<button class = "btn btn-danger" name = "deleteKey", type = "submit", value = "'.$sidArray[$i]. '">Delete</button>';
+        echo '<button class = "btn btn-danger btn-sm" name = "deleteKey", type = "submit", value = "'.$sidArray[$i]. '">Delete</button>';
         echo '</form></td>';
 
         

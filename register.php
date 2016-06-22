@@ -37,7 +37,7 @@ if (!empty($_POST["username"]) && !empty($_POST["password"])){
          echo '<div class="form-actions"><a href="register.html" role="button" class="btn btn-lg btn-danger"> Click here to retry</a></div>';
     } 
     else{
-          $sPassword = md5($password);
+          $sPassword = password_hash($password, PASSWORD_DEFAULT);
           $query = "INSERT INTO user_pb (username,password)
           VALUES ('$username','$sPassword')";
           $result = mysqli_query($conn,$query);

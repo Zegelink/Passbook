@@ -167,7 +167,7 @@ echo '<h2 class="form-signin-heading" align="center"><b>New User for '.$name.': 
             
             $counter++;
         }
-        echo '<h2><p align = center>This is your password table</p></h2>';
+        echo '<h2><p align = center>'.$name.' password</p></h2>';
         echo '<table style="width:40%" align=center>';
         echo '<tr>';
         echo '<th>Account</th>';
