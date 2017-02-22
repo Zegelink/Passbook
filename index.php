@@ -1,39 +1,39 @@
 <?php
-    session_start();
-    include 'connect.php';
-    ?>
+session_start();
+include 'connect.php';
+?>
 <?php
-    if(!empty($_SESSION["username"])) {
-        
-    } else {
-        header("Location: login.html");
-        echo 'You are not logined, click <a href="login.html">here</a> to login.';
-    }
-    ?>
+if(!empty($_SESSION["username"])) {
+    
+} else {
+    header("Location: login.html");
+    echo 'You are not logined, click <a href="login.html">here</a> to login.';
+}
+?>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Passbook</title>
+    <title>Passbook</title>
 
-<!-- Bootstrap  CSS and FontAwesome too -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Bootstrap  CSS and FontAwesome too -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<!-- Custom styles for this template -->
-<link href="style.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="style.css" rel="stylesheet">
 
 </head>
 
 <script src="http://www.w3schools.com/lib/w3data.js"></script>
 <body>
-<div w3-include-html="navBar.html"></div>
-<script>
-w3IncludeHTML();
-</script>
+    <div w3-include-html="navBar.html"></div>
+    <script>
+        w3IncludeHTML();
+    </script>
 
-<?php
+    <?php
     $sqlStyle = "SELECT * FROM `MostPopularCatagory`";
     $resultStyle = $conn->query($sqlStyle);
     
@@ -68,13 +68,13 @@ w3IncludeHTML();
         }
         echo "</table>";
         echo "<br>";
-		echo "<br>";
+        echo "<br>";
 
     }
-	
-?>
+    
+    ?>
 
-<?php
+    <?php
     $sqlStyle = "call ReturnMostActiveUser()";
     $resultStyle = $conn->query($sqlStyle);
     
@@ -106,8 +106,8 @@ w3IncludeHTML();
         echo "</table>";
         echo "<br>";
     }
-	
-?>
+    
+    ?>
 
 </body>
 
