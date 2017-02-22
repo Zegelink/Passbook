@@ -1,3 +1,40 @@
 create view MostPopularCatagory as 
 SELECT name, count(*) as num from web_pb natural join key_pb
 group by name ORDER BY num DESC
+
+
+—-table user_pb
+create table user_pb( uid int not null auto increment, username varchar(64) not null, password varchar(64) not null, primary key (uid) )
+
+—table web_pb
+create table web_pb( 
+wid int not null auto increment,
+uid int not null, name varchar(64) not null, primary key (wid),
+foreign key (uid) references user_pb (uid))
+
+—table key_pb
+create table key_pb( 
+kid int not null auto increment,
+wid int not null, 
+account varchar(64) not null, 
+passkey varchar(64) not null, 
+comment varchar(64), 
+primary key (kid),
+foreign key (wid) references web_pb (wid)
+)
+
+—table style_pb
+create table style_pb( 
+sid int not null auto increment,
+uid int not null, style varchar(64) not null, primary key (sid),
+foreign key (uid) references user_pb (uid))
+
+—table itemLibrary_pb
+create table itemLibrary_pb( 
+iid int not null auto increment,
+sid int not null, 
+item varchar(64) not null, 
+primary key (iid),
+foreign key (sid) references style_pb (sid)
+)
+
